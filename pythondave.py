@@ -105,4 +105,4 @@ while game_running:
     computer(board)
     checkWin()
     checkTie(board)
-    print_board(board)
+    #print_board(board)
