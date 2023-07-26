@@ -96,10 +96,8 @@ while not check_won2(game_board):
         print( "This is not a legal move there is an X or Y there already try again ")
         user_number = int(input("Pick a number between 1 and 9 : "))
     modify_board(game_board)
-    if check_won2(game_board):
-       
-        game_running = False
-    user_piece = switch_players(user_piece)
+    if not check_won2(game_board):
+       user_piece = switch_players(user_piece)
  
 the_victor = check_won2(game_board)
 hail_the_winner(user_piece = user_piece, the_victor=the_victor)
