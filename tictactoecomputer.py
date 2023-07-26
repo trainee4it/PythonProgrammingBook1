@@ -97,13 +97,17 @@ def modify_board(game):
 
 while not check_won2(game_board):
     print_gameboard(game_board)
-   
-    user_number = int(input("Pick a number between 1 and 9 : "))
-
-    while legal_move(game_board,user_number) == False:
-        print( "This is not a legal move there is an X or Y there already try again ")
+    if user_piece == 'X':
         user_number = int(input("Pick a number between 1 and 9 : "))
-    modify_board(game_board)
+
+        while legal_move(game_board,user_number) == False:
+            print( "This is not a legal move there is an X or Y there already try again ")
+            user_number = int(input("Pick a number between 1 and 9 : "))
+            modify_board(game_board)
+    else:
+        computer_move(game_board,user_piece)
+    
+    
     if not check_won2(game_board):
        user_piece = switch_players(user_piece)
  
