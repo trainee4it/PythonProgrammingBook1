@@ -49,6 +49,12 @@ def check_won(game):
     # no winner
     return False
  
+def computer_move(game,user_piece):
+    for i in range(9):
+        if legal_move(user_number):
+            game[i] = user_piece
+
+
 def check_won2(game):
     # check rows
     for i in range(3):
@@ -91,7 +97,9 @@ def modify_board(game):
 
 while not check_won2(game_board):
     print_gameboard(game_board)
+   
     user_number = int(input("Pick a number between 1 and 9 : "))
+
     while legal_move(game_board,user_number) == False:
         print( "This is not a legal move there is an X or Y there already try again ")
         user_number = int(input("Pick a number between 1 and 9 : "))
