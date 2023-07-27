@@ -115,7 +115,16 @@ def ai_move1(game, user_piece):
             game[i] = user_piece
             break
 
-
+def ai_move_evil (game,user_piece):
+    
+    if game[4] not in ['X','O']:
+       game[4] = user_piece
+       
+    else:
+        for i in range(9):
+            if game[i] != 'X' and game[i] != 'O':
+                game[i] = user_piece
+                break
 
 def main():
     user_piece = 'X'
