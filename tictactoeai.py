@@ -1,13 +1,14 @@
 import random
  
-print("Welcome to Tic Tact Toe")
-print("-----------------------")
- 
-game_running = True
-user_piece = "X"
-user_number = None
+#game_running = True
+#user_piece = "X"
+
 possible_numbers = (1,2,3,4,5,6,7,8,9)
-game_board = [1,2,3,4,5,6,7,8,9]
+
+ 
+def show_instructions():
+    print("Welcome to Tic Tact Toe")
+    print("-----------------------")
  
 
 def print_gameboard(game):
@@ -75,9 +76,9 @@ def check_won2(game):
     # no winner or tie
     return False
  
-def hail_the_winner(user_piece,the_victor):
+def hail_the_winner(the_victor):
     if the_victor != 'Tie':
-        print(f"Congratulations player {user_piece}")
+        print(f"Congratulations player {the_victor}")
     else:
         print("No one is the victor, it is a draw ")
    
@@ -90,16 +91,16 @@ def switch_players(current_player):
         return 'X'
 
 
-def modify_board(game,user_number):
+def modify_board(game,user_number,user_piece):
     game[user_number - 1] = user_piece
 
-def human_move(game):
+def human_move(game,user_piece):
     user_number = int(input("Pick a number between 1 and 9 : "))
 
-    while legal_move(game_board,user_number) == False:
+    while legal_move(game,user_number) == False:
         print( "This is not a legal move there is an X or Y there already try again ")
         user_number = int(input("Pick a number between 1 and 9 : "))
-    modify_board(game_board,user_number)
+    modify_board(game,user_number,user_piece)
 
 def ai_move(game,user_piece):
     for i in range(9):
@@ -117,18 +118,19 @@ def ai_move1(game, user_piece):
 
 def main():
     user_piece = 'X'
+    game_board = [1,2,3,4,5,6,7,8,9]
     while not check_won2(game_board):
         print_gameboard(game_board)
-        human_move(game_board)
+        human_move(game_board,user_piece)
     
         if not check_won2(game_board):
             user_piece = switch_players(user_piece)
         ai_move(game_board,user_piece)
 
     the_victor = check_won2(game_board)
-    hail_the_winner(user_piece = user_piece, the_victor=the_victor)
-    print("HELLO")
+    hail_the_winner(the_victor)
     print_gameboard(game_board)
 
 
 main()
+
