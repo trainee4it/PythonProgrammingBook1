@@ -90,20 +90,22 @@ def switch_players(current_player):
         return 'X'
 
 
-def modify_board(game):
+def modify_board(game,user_number):
     game[user_number - 1] = user_piece
 
-
-
-while not check_won2(game_board):
-    print_gameboard(game_board)
-   
+def human_move(game):
     user_number = int(input("Pick a number between 1 and 9 : "))
 
     while legal_move(game_board,user_number) == False:
         print( "This is not a legal move there is an X or Y there already try again ")
         user_number = int(input("Pick a number between 1 and 9 : "))
-    modify_board(game_board)
+    modify_board(game_board,user_number)
+
+
+while not check_won2(game_board):
+    print_gameboard(game_board)
+    human_move(game_board)
+   
     if not check_won2(game_board):
        user_piece = switch_players(user_piece)
  
