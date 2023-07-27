@@ -103,10 +103,16 @@ def human_move(game,user_piece):
     modify_board(game,user_number,user_piece)
 
 def ai_move(game,user_piece):
-    for i in range(9):
-        if game[i] != 'X' and game[i] != 'O':
-           game[i] = user_piece
-           break
+    
+    if game[4] not in ['X','O']:
+       game[4] = user_piece
+       
+    else:
+        for i in range(9):
+            if game[i] != 'X' and game[i] != 'O':
+            
+                game[i] = user_piece
+                break
 
 def ai_move1(game, user_piece):
     for i in range(9):
@@ -125,7 +131,8 @@ def main():
     
         if not check_won2(game_board):
             user_piece = switch_players(user_piece)
-        ai_move(game_board,user_piece)
+            ai_move(game_board,user_piece)
+            user_piece = switch_players(user_piece)
 
     the_victor = check_won2(game_board)
     hail_the_winner(the_victor)
