@@ -101,7 +101,7 @@ def human_move(game):
         user_number = int(input("Pick a number between 1 and 9 : "))
     modify_board(game_board,user_number)
 
-def ai_move(game):
+def ai_move(game,user_piece):
     for i in range(9):
         if game[i] != 'X' and game[i] != 'O':
            game[i] = user_piece
@@ -115,14 +115,19 @@ def ai_move1(game, user_piece):
 
 
 
+def main():
+    user_piece = 'X'
+    while not check_won2(game_board):
+        print_gameboard(game_board)
+        human_move(game_board)
+    
+        if not check_won2(game_board):
+            user_piece = switch_players(user_piece)
+        ai_move(game_board,user_piece)
 
-while not check_won2(game_board):
+    the_victor = check_won2(game_board)
+    hail_the_winner(user_piece = user_piece, the_victor=the_victor)
     print_gameboard(game_board)
-    human_move(game_board)
-   
-    if not check_won2(game_board):
-       user_piece = switch_players(user_piece)
-    ai_move(game_board)
-the_victor = check_won2(game_board)
-hail_the_winner(user_piece = user_piece, the_victor=the_victor)
-print_gameboard(game_board)
+
+
+main()
