@@ -50,11 +50,6 @@ def check_won(game):
     # no winner
     return False
  
-def computer_move(game,user_piece):
-    for i in range(9):
-        if legal_move(user_number):
-            game[i] = user_piece
-
 
 def check_won2(game):
     # check rows
