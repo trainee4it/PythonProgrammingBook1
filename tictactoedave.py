@@ -76,7 +76,7 @@ def check_won2(game):
     return False
  
 def hail_the_winner(user_piece,the_victor):
-    if the_victor != 'tie':
+    if the_victor != 'Tie':
         print(f"Congratulations player {user_piece}")
     else:
         print("No one is the victor, it is a draw ")
